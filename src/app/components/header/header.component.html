@@ -1,0 +1,48 @@
+<header class="header" [class.scrolled]="isScrolled">
+  <div class="container">
+    <div class="header-inner">
+      <!-- Logo -->
+      <a routerLink="/" class="logo" (click)="closeMenu()">
+        <div class="logo-mark">AE</div>
+        <div class="logo-text">
+          <span class="logo-brand">AutoElite</span>
+          <span class="logo-sub">Seminovos</span>
+        </div>
+      </a>
+
+      <!-- Nav Desktop -->
+      <nav class="nav-desktop">
+        <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">Início</a>
+        <a routerLink="/catalogo" routerLinkActive="active">Catálogo</a>
+        <a routerLink="/sobre" routerLinkActive="active">Sobre</a>
+        <a routerLink="/contato" routerLinkActive="active">Contato</a>
+      </nav>
+
+      <!-- Actions -->
+      <div class="header-actions">
+        <a routerLink="/catalogo" class="btn btn-primary">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+          Ver Veículos
+        </a>
+        <button class="menu-toggle" (click)="toggleMenu()" [class.open]="menuOpen">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Mobile Menu -->
+  <div class="mobile-menu" [class.open]="menuOpen">
+    <nav>
+      <a routerLink="/" (click)="closeMenu()">Início</a>
+      <a routerLink="/catalogo" (click)="closeMenu()">Catálogo</a>
+      <a routerLink="/sobre" (click)="closeMenu()">Sobre Nós</a>
+      <a routerLink="/contato" (click)="closeMenu()">Contato</a>
+    </nav>
+    <div class="mobile-menu-footer">
+      <a href="tel:+554199999999" class="mobile-contact">
+        📞 (41) 9999-9999
+      </a>
+    </div>
+  </div>
+</header>

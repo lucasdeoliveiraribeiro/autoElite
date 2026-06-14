@@ -1,0 +1,51 @@
+<div class="catalogo-page">
+  <!-- Page Header -->
+  <div class="page-header">
+    <div class="container">
+      <div class="breadcrumb">
+        <a routerLink="/">Início</a>
+        <span>/</span>
+        <span>Catálogo</span>
+      </div>
+      <h1>Nosso <span>Catálogo</span></h1>
+      <p>Encontre o veículo perfeito entre as nossas opções</p>
+    </div>
+  </div>
+
+  <div class="container catalogo-body">
+    <!-- Filtros -->
+    <app-filter-bar (filterChange)="onFilterChange($event)"></app-filter-bar>
+
+    <!-- Toolbar -->
+    <div class="results-toolbar">
+      <div class="results-count">
+        <strong>{{ totalCars }}</strong> veículos encontrados
+        <span *ngIf="currentFilter.busca"> para "<em>{{ currentFilter.busca }}</em>"</span>
+        <span *ngIf="currentFilter.marca"> · Marca: <em>{{ currentFilter.marca }}</em></span>
+      </div>
+      <div class="sort-wrap">
+        <label>Ordenar:</label>
+        <select [(ngModel)]="sortBy" (change)="onSortChange()">
+          <option *ngFor="let o of sortOptions" [value]="o.value">{{ o.label }}</option>
+        </select>
+      </div>
+    </div>
+
+    <!-- Loading -->
+    <div class="loading-grid" *ngIf="loading">
+      <div class="skeleton-card" *ngFor="let i of [1,2,3,4,5,6]"></div>
+    </div>
+
+    <!-- Grid de carros -->
+    <div class="cars-grid" *ngIf="!loading">
+      <app-car-card *ngFor="let car of cars" [car]="car"></app-car-card>
+    </div>
+
+    <!-- Empty -->
+    <div class="empty-state" *ngIf="!loading && cars.length === 0">
+      <div class="empty-icon">🔍</div>
+      <h3>Nenhum veículo encontrado</h3>
+      <p>Tente ajustar os filtros ou fazer uma busca diferente.</p>
+    </div>
+  </div>
+</div>

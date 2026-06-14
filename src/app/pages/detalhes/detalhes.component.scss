@@ -1,0 +1,143 @@
+.detalhes-page { padding-bottom: 80px; }
+
+.page-header {
+  background: var(--secondary);
+  padding: 100px 0 24px;
+  margin-bottom: 40px;
+  .breadcrumb {
+    display: flex; align-items: center; gap: 8px; font-size: 13px;
+    color: rgba(255,255,255,0.4);
+    a { color: rgba(255,255,255,0.4); text-decoration: none; &:hover { color: #fff; } }
+    span:last-child { color: rgba(255,255,255,0.7); }
+  }
+}
+
+.detalhes-grid {
+  display: grid;
+  grid-template-columns: 1fr 380px;
+  gap: 40px;
+  margin-bottom: 48px;
+  @media (max-width: 900px) { grid-template-columns: 1fr; }
+}
+
+.galeria {
+  .main-image {
+    position: relative;
+    border-radius: var(--radius);
+    overflow: hidden;
+    height: 420px;
+    background: #f0f0f0;
+    img { width: 100%; height: 100%; object-fit: cover; }
+    .badges { position: absolute; top: 16px; left: 16px; display: flex; gap: 8px; }
+  }
+  .thumbnails {
+    display: flex; gap: 12px; margin-top: 12px;
+    .thumb {
+      width: 80px; height: 60px; border-radius: 8px; overflow: hidden;
+      cursor: pointer; border: 2px solid transparent; transition: border-color 0.2s;
+      img { width: 100%; height: 100%; object-fit: cover; }
+      &.active { border-color: var(--primary); }
+    }
+  }
+}
+
+.info-sidebar {
+  display: flex; flex-direction: column; gap: 24px;
+}
+
+.car-marca-tag {
+  font-size: 11px; font-weight: 700; color: var(--primary);
+  text-transform: uppercase; letter-spacing: 0.1em;
+}
+
+h1 {
+  font-size: 2.2rem; font-weight: 800; color: var(--secondary); margin: 4px 0;
+}
+
+.car-versao { font-size: 14px; color: var(--text-muted); }
+
+.quick-specs {
+  display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px;
+}
+
+.qs-item {
+  background: var(--bg); border-radius: var(--radius-sm);
+  padding: 14px; border: 1px solid var(--border);
+  .qs-icon { font-size: 1.3rem; margin-bottom: 6px; }
+  .qs-label { font-size: 11px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.05em; }
+  .qs-value { font-weight: 700; color: var(--secondary); font-size: 14px; margin-top: 2px; }
+}
+
+.price-section {
+  background: var(--bg); border-radius: var(--radius); padding: 20px; border: 1px solid var(--border);
+  .price-label { font-size: 11px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.05em; }
+  .price-value {
+    font-family: 'Barlow Condensed', sans-serif; font-size: 2.2rem;
+    font-weight: 800; color: var(--secondary); margin: 4px 0;
+  }
+  .price-info { font-size: 13px; color: var(--text-muted); strong { color: var(--primary); } }
+}
+
+.actions {
+  display: flex; gap: 12px; align-items: center;
+  .btn { flex: 1; justify-content: center; }
+}
+
+.btn-fav {
+  width: 48px; height: 48px; border-radius: var(--radius-sm); border: 2px solid var(--border);
+  background: #fff; cursor: pointer; display: flex; align-items: center; justify-content: center;
+  color: var(--text-muted); transition: all 0.2s; flex-shrink: 0;
+  &:hover, &.active { color: var(--primary); border-color: var(--primary); }
+}
+
+.detalhes-extras {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; margin-bottom: 64px;
+  @media (max-width: 900px) { grid-template-columns: 1fr; }
+}
+
+.detail-section {
+  h2 {
+    font-size: 1.3rem; font-weight: 700; color: var(--secondary);
+    margin-bottom: 20px; padding-bottom: 12px; border-bottom: 2px solid var(--primary);
+    display: inline-block;
+  }
+  p { font-size: 14px; color: var(--text-muted); line-height: 1.8; }
+}
+
+.specs-grid { display: flex; flex-direction: column; gap: 8px; }
+
+.spec-row {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 8px 0; border-bottom: 1px solid var(--border); font-size: 14px;
+  span { color: var(--text-muted); }
+  strong { color: var(--secondary); font-weight: 600; }
+}
+
+.opcionais-grid {
+  display: flex; flex-direction: column; gap: 8px;
+}
+
+.opcional-item {
+  display: flex; align-items: center; gap: 10px; font-size: 13px; color: var(--text);
+  svg { color: #10B981; flex-shrink: 0; }
+}
+
+.similares {
+  h2 { font-size: 2rem; font-weight: 800; color: var(--secondary); margin-bottom: 24px;
+    span { color: var(--primary); } }
+}
+
+.cars-grid {
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 24px;
+}
+
+.loading-page {
+  display: flex; align-items: center; justify-content: center; height: 60vh;
+}
+
+.spinner {
+  width: 40px; height: 40px; border: 3px solid var(--border);
+  border-top-color: var(--primary); border-radius: 50%; animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin { to { transform: rotate(360deg); } }

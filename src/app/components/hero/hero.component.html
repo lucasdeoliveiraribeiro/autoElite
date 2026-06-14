@@ -1,0 +1,72 @@
+<section class="hero">
+  <!-- Background slides -->
+  <div class="hero-slides">
+    <div *ngFor="let slide of slides; let i = index"
+         class="slide"
+         [class.active]="i === currentSlide"
+         [style.backgroundImage]="'url(' + slide.bg + ')'">
+    </div>
+  </div>
+  <div class="hero-overlay"></div>
+
+  <!-- Content -->
+  <div class="container hero-content">
+    <div class="hero-text">
+      <div class="hero-eyebrow">🏎️ Curitiba • Paraná</div>
+      <h1 class="hero-title">
+        Encontre o<br>
+        <span>Carro Perfeito</span><br>
+        para Você
+      </h1>
+      <p class="hero-desc">
+        Mais de 500 veículos seminovos com procedência garantida, laudos de vistoria e financiamento facilitado.
+      </p>
+
+      <!-- Search box -->
+      <div class="hero-search">
+        <div class="search-input-wrap">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+          <input
+            type="text"
+            placeholder="Buscar por marca, modelo ou versão..."
+            [(ngModel)]="searchTerm"
+            (keyup.enter)="search()"
+          >
+        </div>
+        <button class="btn btn-primary btn-lg" (click)="search()">Buscar</button>
+      </div>
+
+      <!-- Quick filters -->
+      <div class="quick-filters">
+        <span>Populares:</span>
+        <a routerLink="/catalogo" [queryParams]="{marca:'Toyota'}">Toyota</a>
+        <a routerLink="/catalogo" [queryParams]="{marca:'Honda'}">Honda</a>
+        <a routerLink="/catalogo" [queryParams]="{marca:'Volkswagen'}">VW</a>
+        <a routerLink="/catalogo" [queryParams]="{marca:'BMW'}">BMW</a>
+      </div>
+    </div>
+
+    <!-- Stats -->
+    <div class="hero-stats">
+      <div *ngFor="let stat of stats" class="stat-item">
+        <div class="stat-value">{{ stat.value }}</div>
+        <div class="stat-label">{{ stat.label }}</div>
+      </div>
+    </div>
+
+    <!-- Slide dots -->
+    <div class="slide-dots">
+      <button *ngFor="let slide of slides; let i = index"
+              class="dot"
+              [class.active]="i === currentSlide"
+              (click)="setSlide(i)">
+      </button>
+    </div>
+  </div>
+
+  <!-- Scroll hint -->
+  <div class="scroll-hint">
+    <div class="scroll-line"></div>
+    <span>Rolar</span>
+  </div>
+</section>

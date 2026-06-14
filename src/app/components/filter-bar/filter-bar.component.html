@@ -1,0 +1,63 @@
+<div class="filter-bar">
+  <div class="filter-grid">
+    <!-- Busca -->
+    <div class="filter-group full">
+      <label>Buscar</label>
+      <div class="input-icon">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+        <input type="text" placeholder="Marca, modelo..." [(ngModel)]="filter.busca">
+      </div>
+    </div>
+
+    <!-- Marca -->
+    <div class="filter-group">
+      <label>Marca</label>
+      <select [(ngModel)]="filter.marca">
+        <option value="">Todas</option>
+        <option *ngFor="let m of marcas" [value]="m">{{ m }}</option>
+      </select>
+    </div>
+
+    <!-- Combustível -->
+    <div class="filter-group">
+      <label>Combustível</label>
+      <select [(ngModel)]="filter.combustivel">
+        <option value="">Todos</option>
+        <option *ngFor="let c of combustiveis" [value]="c">{{ c }}</option>
+      </select>
+    </div>
+
+    <!-- Câmbio -->
+    <div class="filter-group">
+      <label>Câmbio</label>
+      <select [(ngModel)]="filter.cambio">
+        <option value="">Todos</option>
+        <option *ngFor="let c of cambios" [value]="c">{{ c }}</option>
+      </select>
+    </div>
+
+    <!-- Ano Min -->
+    <div class="filter-group">
+      <label>Ano mín.</label>
+      <input type="number" placeholder="Ex: 2020" [(ngModel)]="filter.anoMin" min="2000" max="2024">
+    </div>
+
+    <!-- Preço Max -->
+    <div class="filter-group">
+      <label>Preço máx.</label>
+      <input type="number" placeholder="Ex: 200000" [(ngModel)]="filter.precoMax" min="0">
+    </div>
+  </div>
+
+  <!-- Actions -->
+  <div class="filter-actions">
+    <button class="btn btn-outline" (click)="clearFilter()">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      Limpar
+    </button>
+    <button class="btn btn-primary" (click)="applyFilter()">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"/></svg>
+      Filtrar
+    </button>
+  </div>
+</div>

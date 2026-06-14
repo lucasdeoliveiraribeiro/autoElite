@@ -1,0 +1,101 @@
+<!-- Hero -->
+<app-hero></app-hero>
+
+<!-- Marcas em destaque -->
+<section class="section-marcas">
+  <div class="container">
+    <div class="marcas-header">
+      <h2 class="section-title">As Melhores <span>Marcas</span></h2>
+      <a routerLink="/catalogo" class="btn btn-outline">Ver tudo</a>
+    </div>
+    <div class="marcas-grid">
+      <a *ngFor="let marca of marcasDestaque"
+         [routerLink]="['/catalogo']"
+         [queryParams]="{marca: marca.nome}"
+         class="marca-card">
+        <div class="marca-logo">{{ marca.logo }}</div>
+        <div class="marca-nome">{{ marca.nome }}</div>
+        <div class="marca-count">{{ marca.modelos }} modelos</div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- Destaques -->
+<section class="section-cards">
+  <div class="container">
+    <div class="section-header">
+      <div>
+        <h2 class="section-title">Veículos em <span>Destaque</span></h2>
+        <p class="section-subtitle">Selecionados com cuidado para você</p>
+      </div>
+      <a routerLink="/catalogo" class="btn btn-outline hide-mobile">Ver catálogo completo</a>
+    </div>
+    <div class="cars-grid">
+      <app-car-card *ngFor="let car of destaques" [car]="car"></app-car-card>
+    </div>
+    <div class="see-more">
+      <a routerLink="/catalogo" class="btn btn-primary btn-lg">
+        Ver todos os veículos
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- Banner CTA -->
+<section class="section-banner">
+  <div class="container">
+    <div class="banner-inner">
+      <div class="banner-content">
+        <div class="banner-tag">💰 Financiamento Especial</div>
+        <h2>Realize o sonho do <span>seu carro novo</span></h2>
+        <p>Simulação em minutos, aprovação rápida e as melhores condições do mercado. Parcelas que cabem no seu bolso.</p>
+        <div class="banner-actions">
+          <a routerLink="/contato" class="btn btn-primary btn-lg">Simular Financiamento</a>
+          <a routerLink="/sobre" class="btn btn-ghost btn-lg">Saiba mais</a>
+        </div>
+      </div>
+      <div class="banner-features">
+        <div class="feature" *ngFor="let f of features">
+          <div class="feature-icon">{{ f.icon }}</div>
+          <div>
+            <div class="feature-title">{{ f.title }}</div>
+            <div class="feature-desc">{{ f.desc }}</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Novidades -->
+<section class="section-cards">
+  <div class="container">
+    <div class="section-header">
+      <div>
+        <h2 class="section-title">Chegando <span>Agora</span></h2>
+        <p class="section-subtitle">Novos veículos adicionados ao estoque</p>
+      </div>
+    </div>
+    <div class="cars-grid">
+      <app-car-card *ngFor="let car of novidades" [car]="car"></app-car-card>
+    </div>
+  </div>
+</section>
+
+<!-- Como funciona -->
+<section class="section-como">
+  <div class="container">
+    <h2 class="section-title text-center">Como <span>Funciona</span></h2>
+    <p class="section-subtitle text-center">Processo simples e transparente</p>
+    <div class="steps">
+      <div class="step" *ngFor="let step of steps; let i = index">
+        <div class="step-num">{{ i + 1 }}</div>
+        <div class="step-icon">{{ step.icon }}</div>
+        <h3>{{ step.title }}</h3>
+        <p>{{ step.desc }}</p>
+      </div>
+    </div>
+  </div>
+</section>

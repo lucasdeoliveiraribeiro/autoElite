@@ -1,0 +1,137 @@
+<div class="detalhes-page" *ngIf="!loading && car">
+  <!-- Header -->
+  <div class="page-header">
+    <div class="container">
+      <div class="breadcrumb">
+        <a routerLink="/">Início</a><span>/</span>
+        <a routerLink="/catalogo">Catálogo</a><span>/</span>
+        <span>{{ car.marca }} {{ car.modelo }}</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="container detalhes-body">
+    <div class="detalhes-grid">
+      <!-- Galeria -->
+      <div class="galeria">
+        <div class="main-image">
+          <img [src]="car.imagens[selectedImage]" [alt]="car.modelo">
+          <div class="badges">
+            <span *ngIf="car.novo" class="badge badge-new">Novo</span>
+            <span *ngIf="car.destaque" class="badge badge-destaque">Destaque</span>
+          </div>
+        </div>
+        <div class="thumbnails" *ngIf="car.imagens.length > 1">
+          <div *ngFor="let img of car.imagens; let i = index"
+               class="thumb"
+               [class.active]="i === selectedImage"
+               (click)="selectedImage = i">
+            <img [src]="img" [alt]="car.modelo + ' ' + (i+1)">
+          </div>
+        </div>
+      </div>
+
+      <!-- Info Sidebar -->
+      <div class="info-sidebar">
+        <div class="car-header">
+          <div class="car-marca-tag">{{ car.marca }}</div>
+          <h1>{{ car.modelo }}</h1>
+          <div class="car-versao">{{ car.versao }}</div>
+        </div>
+
+        <!-- Quick specs -->
+        <div class="quick-specs">
+          <div class="qs-item">
+            <div class="qs-icon">📅</div>
+            <div class="qs-label">Ano</div>
+            <div class="qs-value">{{ car.ano }}</div>
+          </div>
+          <div class="qs-item">
+            <div class="qs-icon">🛣️</div>
+            <div class="qs-label">KM</div>
+            <div class="qs-value">{{ formatKm(car.km) }}</div>
+          </div>
+          <div class="qs-item">
+            <div class="qs-icon">⛽</div>
+            <div class="qs-label">Combustível</div>
+            <div class="qs-value">{{ car.combustivel }}</div>
+          </div>
+          <div class="qs-item">
+            <div class="qs-icon">⚙️</div>
+            <div class="qs-label">Câmbio</div>
+            <div class="qs-value">{{ car.cambio }}</div>
+          </div>
+        </div>
+
+        <!-- Preço -->
+        <div class="price-section">
+          <div class="price-label">Preço</div>
+          <div class="price-value">{{ formatPrice(car.preco) }}</div>
+          <div class="price-info">💳 Financiamento a partir de <strong>R$ {{ (car.preco / 60 | number:'1.0-0') }}/mês</strong></div>
+        </div>
+
+        <!-- Actions -->
+        <div class="actions">
+          <button class="btn btn-primary btn-lg" (click)="whatsapp()">
+            💬 WhatsApp
+          </button>
+          <a routerLink="/contato" class="btn btn-outline btn-lg">📞 Ligar</a>
+          <button class="btn-fav" [class.active]="isFavorite" (click)="toggleFavorite()">
+            <svg width="20" height="20" viewBox="0 0 24 24" [attr.fill]="isFavorite ? 'currentColor' : 'none'" stroke="currentColor" stroke-width="2">
+              <path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Detalhes completos -->
+    <div class="detalhes-extras">
+      <!-- Descrição -->
+      <div class="detail-section">
+        <h2>Sobre este veículo</h2>
+        <p>{{ car.descricao }}</p>
+      </div>
+
+      <!-- Especificações -->
+      <div class="detail-section">
+        <h2>Especificações Técnicas</h2>
+        <div class="specs-grid">
+          <div class="spec-row"><span>Marca</span><strong>{{ car.marca }}</strong></div>
+          <div class="spec-row"><span>Modelo</span><strong>{{ car.modelo }}</strong></div>
+          <div class="spec-row"><span>Versão</span><strong>{{ car.versao }}</strong></div>
+          <div class="spec-row"><span>Ano</span><strong>{{ car.ano }}</strong></div>
+          <div class="spec-row"><span>Quilometragem</span><strong>{{ formatKm(car.km) }}</strong></div>
+          <div class="spec-row"><span>Cor</span><strong>{{ car.cor }}</strong></div>
+          <div class="spec-row"><span>Motor</span><strong>{{ car.motor }}</strong></div>
+          <div class="spec-row"><span>Combustível</span><strong>{{ car.combustivel }}</strong></div>
+          <div class="spec-row"><span>Câmbio</span><strong>{{ car.cambio }}</strong></div>
+          <div class="spec-row"><span>Portas</span><strong>{{ car.portas }}</strong></div>
+        </div>
+      </div>
+
+      <!-- Opcionais -->
+      <div class="detail-section">
+        <h2>Opcionais</h2>
+        <div class="opcionais-grid">
+          <div *ngFor="let op of car.opcionais" class="opcional-item">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            {{ op }}
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Similares -->
+    <div class="similares" *ngIf="similares.length > 0">
+      <h2>Outros <span>{{ car.marca }}</span> disponíveis</h2>
+      <div class="cars-grid">
+        <app-car-card *ngFor="let s of similares" [car]="s"></app-car-card>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="loading-page" *ngIf="loading">
+  <div class="spinner"></div>
+</div>

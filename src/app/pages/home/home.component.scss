@@ -1,0 +1,234 @@
+section { padding: 80px 0; }
+
+.section-header, .marcas-header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  margin-bottom: 40px;
+}
+
+.cars-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 24px;
+}
+
+.see-more {
+  text-align: center;
+  margin-top: 40px;
+}
+
+/* Marcas */
+.section-marcas {
+  background: #fff;
+  padding: 64px 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.marcas-grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 16px;
+
+  @media (max-width: 960px) { grid-template-columns: repeat(3, 1fr); }
+  @media (max-width: 480px) { grid-template-columns: repeat(2, 1fr); }
+}
+
+.marca-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 24px 16px;
+  border-radius: var(--radius);
+  border: 1.5px solid var(--border);
+  text-decoration: none;
+  color: inherit;
+  transition: all 0.2s;
+  cursor: pointer;
+
+  &:hover {
+    border-color: var(--primary);
+    transform: translateY(-4px);
+    box-shadow: var(--shadow);
+  }
+}
+
+.marca-logo {
+  font-size: 2rem;
+  margin-bottom: 10px;
+}
+
+.marca-nome {
+  font-weight: 700;
+  font-size: 14px;
+  color: var(--secondary);
+}
+
+.marca-count {
+  font-size: 11px;
+  color: var(--text-muted);
+  margin-top: 4px;
+}
+
+/* Banner */
+.section-banner {
+  background: var(--secondary);
+  padding: 80px 0;
+}
+
+.banner-inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 64px;
+  align-items: center;
+
+  @media (max-width: 768px) { grid-template-columns: 1fr; gap: 40px; }
+}
+
+.banner-tag {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--accent);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 16px;
+}
+
+.banner-content {
+  h2 {
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 800;
+    color: #fff;
+    margin-bottom: 16px;
+    span { color: var(--accent); }
+  }
+
+  p {
+    color: rgba(255,255,255,0.6);
+    margin-bottom: 32px;
+    line-height: 1.7;
+  }
+}
+
+.banner-actions {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.btn-ghost {
+  background: rgba(255,255,255,0.08);
+  color: rgba(255,255,255,0.8);
+  border: 1px solid rgba(255,255,255,0.15);
+  padding: 12px 24px;
+  border-radius: var(--radius-sm);
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none;
+  transition: all 0.2s;
+  &:hover { background: rgba(255,255,255,0.15); }
+}
+
+.banner-features {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.feature {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+
+  .feature-icon {
+    width: 44px;
+    height: 44px;
+    border-radius: 10px;
+    background: rgba(255,255,255,0.08);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    flex-shrink: 0;
+  }
+
+  .feature-title {
+    font-weight: 600;
+    color: #fff;
+    font-size: 15px;
+  }
+
+  .feature-desc {
+    font-size: 13px;
+    color: rgba(255,255,255,0.5);
+    margin-top: 2px;
+  }
+}
+
+/* Como funciona */
+.section-como { background: #fff; }
+.text-center { text-align: center; }
+
+.steps {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 32px;
+  margin-top: 48px;
+  position: relative;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 28px;
+    left: 10%;
+    right: 10%;
+    height: 2px;
+    background: linear-gradient(to right, var(--primary), var(--primary-light));
+    z-index: 0;
+    @media (max-width: 768px) { display: none; }
+  }
+
+  @media (max-width: 768px) { grid-template-columns: repeat(2, 1fr); }
+  @media (max-width: 480px) { grid-template-columns: 1fr; }
+}
+
+.step {
+  text-align: center;
+  position: relative;
+  z-index: 1;
+
+  .step-num {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: var(--primary);
+    color: #fff;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 800;
+    font-size: 1.3rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 12px;
+    box-shadow: 0 0 0 8px rgba(200,16,46,0.1);
+  }
+
+  .step-icon { font-size: 1.5rem; margin-bottom: 12px; }
+
+  h3 {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--secondary);
+    margin-bottom: 8px;
+  }
+
+  p {
+    font-size: 13px;
+    color: var(--text-muted);
+    line-height: 1.6;
+  }
+}

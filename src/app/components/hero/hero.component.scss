@@ -1,0 +1,237 @@
+.hero {
+  position: relative;
+  height: 100vh;
+  min-height: 640px;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  padding-top: 70px;
+}
+
+.hero-slides {
+  position: absolute;
+  inset: 0;
+}
+
+.slide {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  opacity: 0;
+  transition: opacity 1.2s ease;
+  transform: scale(1.05);
+  transition: opacity 1.2s ease, transform 6s ease;
+
+  &.active {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    135deg,
+    rgba(26,26,46,0.92) 0%,
+    rgba(26,26,46,0.7) 50%,
+    rgba(26,26,46,0.4) 100%
+  );
+}
+
+.hero-content {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
+  padding-top: 40px;
+  padding-bottom: 80px;
+}
+
+.hero-eyebrow {
+  font-size: 13px;
+  font-weight: 600;
+  color: rgba(255,255,255,0.6);
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  margin-bottom: 16px;
+}
+
+.hero-title {
+  font-size: clamp(3rem, 7vw, 5.5rem);
+  font-weight: 800;
+  color: #fff;
+  line-height: 1.05;
+  margin-bottom: 20px;
+  animation: fadeInUp 0.8s ease;
+
+  span {
+    color: var(--primary);
+    -webkit-text-stroke: 0;
+    display: inline;
+  }
+}
+
+.hero-desc {
+  font-size: 1.05rem;
+  color: rgba(255,255,255,0.65);
+  max-width: 480px;
+  margin-bottom: 36px;
+  line-height: 1.7;
+  animation: fadeInUp 0.8s 0.1s ease both;
+}
+
+.hero-search {
+  display: flex;
+  gap: 12px;
+  max-width: 560px;
+  animation: fadeInUp 0.8s 0.2s ease both;
+
+  @media (max-width: 560px) { flex-direction: column; }
+}
+
+.search-input-wrap {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: rgba(255,255,255,0.12);
+  border: 1px solid rgba(255,255,255,0.2);
+  border-radius: var(--radius-sm);
+  padding: 0 16px;
+  backdrop-filter: blur(8px);
+
+  svg { color: rgba(255,255,255,0.5); flex-shrink: 0; }
+
+  input {
+    flex: 1;
+    background: none;
+    border: none;
+    outline: none;
+    color: #fff;
+    font-size: 15px;
+    font-family: 'Inter', sans-serif;
+    padding: 14px 0;
+
+    &::placeholder { color: rgba(255,255,255,0.4); }
+  }
+}
+
+.quick-filters {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 16px;
+  flex-wrap: wrap;
+  animation: fadeInUp 0.8s 0.3s ease both;
+
+  span {
+    font-size: 13px;
+    color: rgba(255,255,255,0.4);
+  }
+
+  a {
+    font-size: 13px;
+    color: rgba(255,255,255,0.65);
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.15);
+    padding: 4px 12px;
+    border-radius: 20px;
+    transition: all 0.2s;
+    text-decoration: none;
+
+    &:hover {
+      background: var(--primary);
+      border-color: var(--primary);
+      color: #fff;
+    }
+  }
+}
+
+.hero-stats {
+  display: flex;
+  gap: 32px;
+  margin-top: 48px;
+  padding-top: 32px;
+  border-top: 1px solid rgba(255,255,255,0.12);
+  animation: fadeInUp 0.8s 0.4s ease both;
+
+  @media (max-width: 480px) { gap: 20px; }
+}
+
+.stat-item {
+  text-align: center;
+  @media (max-width: 480px) { flex: 1; }
+}
+
+.stat-value {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 2rem;
+  font-weight: 800;
+  color: #fff;
+  line-height: 1;
+}
+
+.stat-label {
+  font-size: 11px;
+  color: rgba(255,255,255,0.45);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-top: 4px;
+}
+
+.slide-dots {
+  position: absolute;
+  bottom: 40px;
+  left: 24px;
+  display: flex;
+  gap: 8px;
+}
+
+.dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.3);
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s;
+  padding: 0;
+
+  &.active {
+    width: 24px;
+    border-radius: 3px;
+    background: var(--primary);
+  }
+}
+
+.scroll-hint {
+  position: absolute;
+  bottom: 32px;
+  right: 48px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  color: rgba(255,255,255,0.35);
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+
+  .scroll-line {
+    width: 1px;
+    height: 40px;
+    background: linear-gradient(to bottom, transparent, rgba(255,255,255,0.3));
+    animation: scrollPulse 2s infinite;
+  }
+
+  @media (max-width: 768px) { display: none; }
+}
+
+@keyframes scrollPulse {
+  0%, 100% { opacity: 0.3; }
+  50% { opacity: 1; }
+}

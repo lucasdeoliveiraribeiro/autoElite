@@ -1,0 +1,107 @@
+<div class="contato-page">
+  <div class="page-header">
+    <div class="container">
+      <h1>Entre em <span>Contato</span></h1>
+      <p>Estamos aqui para ajudar você a encontrar o veículo perfeito</p>
+    </div>
+  </div>
+
+  <div class="container contato-body">
+    <div class="contato-grid">
+      <!-- Informações -->
+      <div class="info-col">
+        <h2>Fale Conosco</h2>
+        <p>Nossa equipe está pronta para atender você com agilidade e transparência.</p>
+
+        <div class="info-cards">
+          <div class="info-card">
+            <div class="ic-icon">📍</div>
+            <div>
+              <div class="ic-title">Endereço</div>
+              <div class="ic-value">Av. Sete de Setembro, 4000<br>Curitiba – PR, CEP 80250-200</div>
+            </div>
+          </div>
+          <div class="info-card">
+            <div class="ic-icon">📞</div>
+            <div>
+              <div class="ic-title">Telefone</div>
+              <div class="ic-value">(41) 9999-9999<br>(41) 3333-3333</div>
+            </div>
+          </div>
+          <div class="info-card">
+            <div class="ic-icon">✉️</div>
+            <div>
+              <div class="ic-title">E-mail</div>
+              <div class="ic-value">contato&#64;autoelite.com.br<br>vendas&#64;autoelite.com.br</div>
+            </div>
+          </div>
+          <div class="info-card">
+            <div class="ic-icon">🕐</div>
+            <div>
+              <div class="ic-title">Horário</div>
+              <div class="ic-value">Seg–Sex: 9h às 18h<br>Sábado: 9h às 13h</div>
+            </div>
+          </div>
+        </div>
+
+        <a href="https://wa.me/5541999999999" target="_blank" class="whatsapp-btn">
+          💬 Falar pelo WhatsApp
+        </a>
+      </div>
+
+      <!-- Formulário -->
+      <div class="form-col">
+        <div class="form-card">
+          <h3>Envie uma mensagem</h3>
+
+          <div class="success-msg" *ngIf="success">
+            ✅ Mensagem enviada com sucesso! Em breve entraremos em contato.
+          </div>
+
+          <form [formGroup]="form" (ngSubmit)="onSubmit()" *ngIf="!success">
+            <div class="form-row">
+              <div class="form-group">
+                <label>Nome completo *</label>
+                <input type="text" formControlName="nome" placeholder="Seu nome">
+                <span class="error" *ngIf="submitted && f['nome'].errors?.['required']">Nome obrigatório</span>
+              </div>
+              <div class="form-group">
+                <label>E-mail *</label>
+                <input type="email" formControlName="email" placeholder="seu@email.com">
+                <span class="error" *ngIf="submitted && f['email'].errors?.['email']">E-mail inválido</span>
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label>Telefone *</label>
+                <input type="tel" formControlName="telefone" placeholder="(41) 99999-9999">
+              </div>
+              <div class="form-group">
+                <label>Assunto *</label>
+                <select formControlName="assunto">
+                  <option value="">Selecione...</option>
+                  <option>Informações sobre veículo</option>
+                  <option>Financiamento</option>
+                  <option>Test Drive</option>
+                  <option>Vender meu carro</option>
+                  <option>Outro</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label>Mensagem *</label>
+              <textarea formControlName="mensagem" rows="5" placeholder="Descreva sua necessidade..."></textarea>
+              <span class="error" *ngIf="submitted && f['mensagem'].errors?.['minlength']">Mensagem muito curta</span>
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-lg submit-btn">
+              Enviar Mensagem →
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

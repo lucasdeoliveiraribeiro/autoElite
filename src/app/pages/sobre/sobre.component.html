@@ -1,0 +1,54 @@
+<div class="sobre-page">
+  <div class="page-header">
+    <div class="container">
+      <h1>Sobre a <span>AutoElite</span></h1>
+      <p>Conheça nossa história e nossos valores</p>
+    </div>
+  </div>
+
+  <div class="container">
+    <!-- História -->
+    <section class="section-historia">
+      <div class="historia-grid">
+        <div class="historia-content">
+          <div class="section-tag">📖 Nossa História</div>
+          <h2>Mais de <span>10 anos</span> conectando pessoas aos seus carros dos sonhos</h2>
+          <p>Fundada em 2014 em Curitiba, a AutoElite nasceu com um propósito claro: democratizar o acesso a veículos de qualidade, com transparência e preços justos.</p>
+          <p>Com mais de 500 veículos disponíveis e milhares de clientes satisfeitos, nos tornamos referência no mercado paranaense de seminovos.</p>
+          <div class="historia-nums">
+            <div class="num-item"><strong>10+</strong><span>Anos de mercado</span></div>
+            <div class="num-item"><strong>5000+</strong><span>Clientes felizes</span></div>
+            <div class="num-item"><strong>500+</strong><span>Veículos disponíveis</span></div>
+          </div>
+        </div>
+        <div class="historia-image">
+          <img src="https://images.unsplash.com/photo-1560179707-f14e90ef3623?w=600&q=80" alt="AutoElite">
+        </div>
+      </div>
+    </section>
+
+    <!-- Valores -->
+    <section class="section-valores">
+      <h2 class="section-title text-center">Nossos <span>Valores</span></h2>
+      <div class="valores-grid">
+        <div *ngFor="let v of valores" class="valor-card">
+          <div class="valor-icon">{{ v.icon }}</div>
+          <h3>{{ v.titulo }}</h3>
+          <p>{{ v.desc }}</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Equipe -->
+    <section class="section-equipe">
+      <h2 class="section-title text-center">Nossa <span>Equipe</span></h2>
+      <div class="equipe-grid">
+        <div *ngFor="let pessoa of equipe" class="pessoa-card">
+          <div class="pessoa-foto">{{ pessoa.foto }}</div>
+          <div class="pessoa-nome">{{ pessoa.nome }}</div>
+          <div class="pessoa-cargo">{{ pessoa.cargo }}</div>
+        </div>
+      </div>
+    </section>
+  </div>
+</div>
